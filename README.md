@@ -35,4 +35,5 @@ README.md
 #### Additional Features
 
 - Back to the top button appears when the user scroll > 500px.
+- change color h2 in section element
 
