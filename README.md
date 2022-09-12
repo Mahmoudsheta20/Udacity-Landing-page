@@ -2,7 +2,9 @@
 
 ## Table of Contents
 
-* [Instructions](#instructions)
+* [instructions](#instructions)
+* [Features](#features)
+
 
 ## Instructions
 
@@ -11,3 +13,19 @@ The starter project has some HTML and CSS styling to display a static version of
 To get started, open `js/app.js` and start building out the app's functionality
 
 For specific, detailed instructions, look at the project instructions in the Udacity Classroom.
+
+
+
+
+
+#### Main Features
+
+1. Create the Navigation bar dynamically.
+2. Scroll to any section by clicking on the corresponding element in the Navbar.
+3. By scrolling, the section in the viewport get detected and stylized.
+
+
+#### Additional Features
+
+- Back to the top button appears when the user scroll > 500px.
+
