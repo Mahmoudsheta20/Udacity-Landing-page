@@ -1,8 +1,16 @@
+//  * Define Global Variables
+
 let section = 'section'
 let main = document.querySelector('main')
 let nav = document.querySelector('.navbar__menu #navbar__list')
+let iconMenu = document.querySelector('i')
+
 const p1 =
     'Lorem ipsum dolor sit amet consectetur adipisicing elit. Delectus quis fuga dolor dolorem voluptatem explicabo obcaecati eos doloremque tempore quidem ipsam illo omnis rerum illum, officia odio maxime non ducimus.'
+
+//  * End Global Variables
+
+// build the nav
 const appendNavbar = num => {
     for (let i = 1; i <= num; i++) {
         let li = document.createElement('li')
@@ -13,6 +21,10 @@ const appendNavbar = num => {
         nav.appendChild(li)
     }
 }
+
+appendNavbar(4)
+
+// build the sections
 const appendSections = num => {
     for (let i = 1; i <= num; i++) {
         let sections = document.createElement('section')
@@ -38,7 +50,9 @@ const appendSections = num => {
 }
 
 appendSections(4)
-appendNavbar(4)
+
+// Add class 'active' to section when near top of viewport
+
 let liToggle = document.querySelectorAll('nav li')
 const handelList = liToggle => {
     let sections1 = document.querySelectorAll('section')
@@ -64,39 +78,41 @@ const handelList = liToggle => {
 }
 handelList(liToggle)
 
+// Scroll to anchor ID using scrollTO event
+
 const handelScroll = () => {
-    let sections1 = document.querySelectorAll('section')
-    sections1.forEach(e => {
-        let top = window.scrollY
-        let offset = e.offsetTop
-        let height = e.offsetHeight
+        let sections1 = document.querySelectorAll('section')
+        sections1.forEach(e => {
+            let top = window.scrollY
+            let offset = e.offsetTop
+            let height = e.offsetHeight
 
-        if (top > offset - 100 && top < offset - 100 + height) {
-            let att = e.getAttribute('data-nav')
+            if (top > offset - 100 && top < offset - 100 + height) {
+                let att = e.getAttribute('data-nav')
 
-            liToggle.forEach(ele => {
-                let att1 = ele.getAttribute('data-nav')
+                liToggle.forEach(ele => {
+                    let att1 = ele.getAttribute('data-nav')
 
-                if (att == att1) {
-                    ele.classList.add('active')
-                } else {
-                    ele.classList.remove('active')
-                }
+                    if (att == att1) {
+                        ele.classList.add('active')
+                    } else {
+                        ele.classList.remove('active')
+                    }
 
-                sections1.forEach(e => e.classList.remove('your-active-class'))
-                e.classList.add('your-active-class')
-            })
-        } else {
-            e.classList.remove('your-active-class')
-        }
+                    sections1.forEach(e => e.classList.remove('your-active-class'))
+                    e.classList.add('your-active-class')
+                })
+            } else {
+                e.classList.remove('your-active-class')
+            }
 
-        if (top <= 100) {
-            liToggle[0].classList.remove('active')
-            console.log(true)
-        }
-    })
-}
-
+            if (top <= 100) {
+                liToggle[0].classList.remove('active')
+                console.log(true)
+            }
+        })
+    }
+    // Scroll to section on link click
 const handelTop = () => {
     let x = document.querySelector('.top')
 
@@ -113,3 +129,9 @@ const handelTop = () => {
 }
 window.addEventListener('scroll', handelScroll)
 handelTop()
+
+// add class active to menu in min screen
+
+iconMenu.addEventListener('click', () => {
+    nav.classList.toggle('active')
+})
